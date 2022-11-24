@@ -1,0 +1,18 @@
+Usuario senan = usuarioFacade.find(4);
+    Usuario tres = usuarioFacade.find(3);
+
+    List<Amigos> listaSenan = senan.getAmigosList();
+
+    Amigos amigoSenan = new Amigos();
+
+    java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+    amigoSenan.setFechaInicio(sqlDate);
+    amigoSenan.setIdUsuario(tres);
+    listaSenan.add(amigoSenan);
+
+    usuarioFacade.edit(senan);
+    amigosFacade.edit(amigoSenan);
+
+    RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/index.jsp");
+    rd.forward(request, response);
